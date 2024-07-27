@@ -1,4 +1,4 @@
-# ArchMusicBot Configs
+# ArchMusicBot Configs Nc
 
 Config vars are basically the variables which configure or modify bot to function, which are the basic necessities of plugins or code to work. You have to set the proper mandatory vars to make it functional and to start the basic feature of bot.
 
