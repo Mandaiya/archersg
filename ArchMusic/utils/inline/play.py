@@ -151,7 +151,8 @@ def stream_markup(_, videoid, chat_id, played, dur):
                 text="⌘", callback_data=f"ADMIN Skip|{chat_id}"
             ),
             InlineKeyboardButton(
-                text="▢", callback_data=f"ADMIN Stop|{chat_id}"   
+                text="▢", callback_data=f"ADMIN Stop|{chat_id}"
+            )
         ],
         [
             InlineKeyboardButton(
