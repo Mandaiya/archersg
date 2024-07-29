@@ -18,8 +18,8 @@ from ArchMusic.core.call import ArchMusic
 from ArchMusic.misc import db
 from ArchMusic.utils.database import get_loop
 from ArchMusic.utils.decorators import AdminRightsCheck
-from ArchMusic.utils.inline.play import (stream_markup,
-                                          telegram_markup)
+from ArchMusic.utils.inline.play import stream_markup
+                                          #telegram_markup)
 from ArchMusic.utils.stream.autoclear import auto_clean
 from ArchMusic.utils.thumbnails import gen_thumb
 
@@ -122,7 +122,7 @@ async def skip(cli, message: Message, _, chat_id):
             await ArchMusic.skip_stream(chat_id, link, video=status)
         except Exception:
             return await message.reply_text(_["call_9"])
-        button = telegram_markup(_, chat_id)
+        button = stream_markup(_, videoid, chat_id, played, dur)
         img = await gen_thumb(videoid)
         run = await message.reply_photo(
             photo=img,
@@ -169,7 +169,7 @@ async def skip(cli, message: Message, _, chat_id):
             await ArchMusic.skip_stream(chat_id, videoid, video=status)
         except Exception:
             return await message.reply_text(_["call_9"])
-        button = telegram_markup(_, chat_id)
+        button = stream_markup(_, videoid, chat_id, played, dur)
         run = await message.reply_photo(
             photo=config.STREAM_IMG_URL,
             caption=_["stream_2"].format(user),
@@ -183,7 +183,7 @@ async def skip(cli, message: Message, _, chat_id):
         except Exception:
             return await message.reply_text(_["call_9"])
         if videoid == "telegram":
-            button = telegram_markup(_, chat_id)
+            button = stream_markup(_, videoid, chat_id, played, dur)
             run = await message.reply_photo(
                 photo=config.TELEGRAM_AUDIO_URL
                 if str(streamtype) == "audio"
@@ -196,7 +196,7 @@ async def skip(cli, message: Message, _, chat_id):
             db[chat_id][0]["mystic"] = run
             db[chat_id][0]["markup"] = "tg"
         elif videoid == "soundcloud":
-            button = telegram_markup(_, chat_id)
+            button = stream_markup(_, videoid, chat_id, played, dur)
             run = await message.reply_photo(
                 photo=config.SOUNCLOUD_IMG_URL
                 if str(streamtype) == "audio"
