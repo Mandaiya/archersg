@@ -248,7 +248,7 @@ STATS_IMG_URL = getenv(
 
     "STATS_IMG_URL",
 
-    "assets/SVDsys.png",
+    "https://telegra.ph/file/789ef40959f7e8f0144ef.jpg",
 
 )
 
