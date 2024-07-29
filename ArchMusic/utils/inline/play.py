@@ -137,7 +137,7 @@ def stream_markup(_, videoid, chat_id, played, dur):
             )
         ],
         [
-             InlineKeyboardButton(
+            InlineKeyboardButton(
                 text="⌲",
                 callback_data=f"ADMIN Resume|{chat_id}",
             ),
