@@ -42,8 +42,8 @@ from ArchMusic.utils.database import (add_active_chat,
                                        remove_active_video_chat,
                                        set_loop)
 from ArchMusic.utils.exceptions import AssistantErr
-from ArchMusic.utils.inline.play import (stream_markup,
-                                          telegram_markup)
+from ArchMusic.utils.inline.play import stream_markup
+                                          #telegram_markup)
 from ArchMusic.utils.stream.autoclear import auto_clean
 from ArchMusic.utils.thumbnails import gen_thumb
 
