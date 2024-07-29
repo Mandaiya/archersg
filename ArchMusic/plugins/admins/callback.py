@@ -29,8 +29,8 @@ from ArchMusic.utils.formatters import seconds_to_min
 from ArchMusic.utils.inline.play import (panel_markup_1,
                                           panel_markup_2,
                                           panel_markup_3,
-                                          stream_markup,
-                                          telegram_markup)
+                                          stream_markup)
+                                          #telegram_markup)
 from ArchMusic.utils.stream.autoclear import auto_clean
 from ArchMusic.utils.thumbnails import gen_thumb
 
@@ -65,7 +65,7 @@ async def del_back_playlist(client, CallbackQuery, _):
     callback_request = callback_data.split(None, 1)[1]
     videoid, chat_id = callback_request.split("|")
     if videoid == str(None):
-        buttons = telegram_markup(_, chat_id)
+        buttons = stream_markup(_, videoid, chat_id, played, dur)
     else:
         buttons = stream_markup(_, videoid, chat_id)
     chat_id = CallbackQuery.message.chat.id
@@ -274,7 +274,7 @@ async def del_back_playlist(client, CallbackQuery, _):
                 return await CallbackQuery.message.reply_text(
                     _["call_9"]
                 )
-            button = telegram_markup(_, chat_id)
+            button = stream_markup(_, videoid, chat_id, played, dur)
             img = await gen_thumb(videoid)
             run = await CallbackQuery.message.reply_photo(
                 photo=img,
@@ -329,7 +329,7 @@ async def del_back_playlist(client, CallbackQuery, _):
                 return await CallbackQuery.message.reply_text(
                     _["call_9"]
                 )
-            button = telegram_markup(_, chat_id)
+            button = stream_markup(_, videoid, chat_id, played, dur)
             run = await CallbackQuery.message.reply_photo(
                 photo=STREAM_IMG_URL,
                 caption=_["stream_2"].format(user),
@@ -346,7 +346,7 @@ async def del_back_playlist(client, CallbackQuery, _):
                     _["call_9"]
                 )
             if videoid == "telegram":
-                button = telegram_markup(_, chat_id)
+                button = stream_markup(_, videoid, chat_id, played, dur)
                 run = await CallbackQuery.message.reply_photo(
                     photo=TELEGRAM_AUDIO_URL
                     if str(streamtype) == "audio"
@@ -359,7 +359,7 @@ async def del_back_playlist(client, CallbackQuery, _):
                 db[chat_id][0]["mystic"] = run
                 db[chat_id][0]["markup"] = "tg"
             elif videoid == "soundcloud":
-                button = telegram_markup(_, chat_id)
+                button = stream_markup(_, videoid, chat_id, played, dur)
                 run = await CallbackQuery.message.reply_photo(
                     photo=SOUNCLOUD_IMG_URL
                     if str(streamtype) == "audio"
