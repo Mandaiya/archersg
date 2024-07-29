@@ -158,6 +158,7 @@ def stream_markup(_, videoid, chat_id, played, dur):
             InlineKeyboardButton(
                 text=_["PL_B_2"],
                 callback_data=f"add_playlist {videoid}",
+            ),
            
             InlineKeyboardButton(
                 text=_["CLOSEMENU_BUTTON"], callback_data="close"
