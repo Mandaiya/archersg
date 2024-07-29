@@ -248,7 +248,7 @@ STATS_IMG_URL = getenv(
 
     "STATS_IMG_URL",
 
-    "assets/Stats.jpeg",
+    "assets/SVDsys.png",
 
 )
 
